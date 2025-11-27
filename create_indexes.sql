@@ -7,8 +7,8 @@ CREATE INDEX order_status_index_hash ON orders USING hash(order_status);
 
 CREATE INDEX vending_point_schedule_day_week_index_hash ON vending_point_schedules
     USING hash(vending_point_schedule_day_week);
-CREATE INDEX vending_point_unusual_schedule_date_index_hash ON vending_point_unusual_schedules
-    USING hash(vending_point_unusual_schedule_date);
+CREATE INDEX vending_point_unusual_schedule_date_btree
+    ON vending_point_unusual_schedules (vending_point_unusual_schedule_date);
 
 CREATE INDEX function_variant_index_hash ON function_variants USING hash(function_variant);
 
