@@ -20,23 +20,19 @@ SELECT COUNT(*) FROM orders WHERE order_type = 'print';
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM orders WHERE order_status = 'completed';
 
--- 5. not_index vending_point_schedule_day_week_index_btree
-EXPLAIN (ANALYZE, BUFFERS)
-SELECT COUNT(*) FROM vending_point_schedules WHERE vending_point_schedule_day_week = 'monday';
-
--- 6. not_index vending_point_unusual_schedule_date_index_btree
+-- 5. not_index vending_point_unusual_schedule_date_index_hash
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM vending_point_unusual_schedules WHERE vending_point_unusual_schedule_date = current_date - interval '10 days';
 
--- 7. not_index function_variant_index_btree
+-- 6. not_index function_variant_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM function_variants WHERE function_variant = 'color_print';
 
--- 8. not_index machine_supplies_datetime_index_btree
+-- 7. not_index machine_supplies_datetime_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM machine_supplies WHERE machine_supplies_datetime BETWEEN now() - interval '30 days' AND now();
 
--- 9. not_index machine_condition_datetime_index_btree
+-- 8. not_index machine_condition_datetime_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM machine_conditions WHERE machine_condition_datetime BETWEEN now() - interval '7 days' AND now();
 
@@ -62,22 +58,18 @@ SELECT COUNT(*) FROM orders WHERE order_type = 'print';
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM orders WHERE order_status = 'completed';
 
--- 5. index vending_point_schedule_day_week_index_btree
-EXPLAIN (ANALYZE, BUFFERS)
-SELECT COUNT(*) FROM vending_point_schedules WHERE vending_point_schedule_day_week = 'monday';
-
--- 6. index vending_point_unusual_schedule_date_index_btree
+-- 5. index vending_point_unusual_schedule_date_index_hash
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM vending_point_unusual_schedules WHERE vending_point_unusual_schedule_date = current_date - interval '10 days';
 
--- 7. index function_variant_index_btree
+-- 6. index function_variant_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM function_variants WHERE function_variant = 'color_print';
 
--- 8. index machine_supplies_datetime_index_btree
+-- 7. index machine_supplies_datetime_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM machine_supplies WHERE machine_supplies_datetime BETWEEN now() - interval '30 days' AND now();
 
--- 9. index machine_condition_datetime_index_btree
+-- 8. index machine_condition_datetime_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM machine_conditions WHERE machine_condition_datetime BETWEEN now() - interval '7 days' AND now();
