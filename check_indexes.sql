@@ -12,23 +12,23 @@ SELECT COUNT(*) FROM users WHERE user_email = 'user_50000@example.com';
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM users WHERE user_login = 'user_75000';
 
--- 3. not_index order_type_index_hash
+-- 3. not_index order_type_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM orders WHERE order_type = 'print';
 
--- 4. not_index order_status_index_hash
+-- 4. not_index order_status_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM orders WHERE order_status = 'completed';
 
--- 5. not_index vending_point_schedule_day_week_index_hash
+-- 5. not_index vending_point_schedule_day_week_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM vending_point_schedules WHERE vending_point_schedule_day_week = 'monday';
 
--- 6. not_index vending_point_unusual_schedule_date_index_hash
+-- 6. not_index vending_point_unusual_schedule_date_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM vending_point_unusual_schedules WHERE vending_point_unusual_schedule_date = current_date - interval '10 days';
 
--- 7. not_index function_variant_index_hash
+-- 7. not_index function_variant_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM function_variants WHERE function_variant = 'color_print';
 
@@ -52,23 +52,23 @@ SELECT COUNT(*) FROM users WHERE user_email = 'user_50000@example.com';
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM users WHERE user_login = 'user_75000';
 
--- 3. index order_type_index_hash
+-- 3. index order_type_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM orders WHERE order_type = 'print';
 
--- 4. index order_status_index_hash
+-- 4. index order_status_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM orders WHERE order_status = 'completed';
 
--- 5. index vending_point_schedule_day_week_index_hash
+-- 5. index vending_point_schedule_day_week_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM vending_point_schedules WHERE vending_point_schedule_day_week = 'monday';
 
--- 6. index vending_point_unusual_schedule_date_index_hash
+-- 6. index vending_point_unusual_schedule_date_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM vending_point_unusual_schedules WHERE vending_point_unusual_schedule_date = current_date - interval '10 days';
 
--- 7. index function_variant_index_hash
+-- 7. index function_variant_index_btree
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM function_variants WHERE function_variant = 'color_print';
 
