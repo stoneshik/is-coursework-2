@@ -40,6 +40,8 @@ SELECT COUNT(*) FROM machine_supplies WHERE machine_supplies_datetime BETWEEN no
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT COUNT(*) FROM machine_conditions WHERE machine_condition_datetime BETWEEN now() - interval '7 days' AND now();
 
+DISCARD PLANS;
+
 -- Включаем индексы для второй части тестов
 SET enable_indexscan = on;
 SET enable_bitmapscan = on;
